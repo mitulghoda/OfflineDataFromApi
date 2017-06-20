@@ -21,7 +21,7 @@ public class ApiHandler {
 
 
 
-    private static final String BASE_api = "http://vnnovate.com/nutrition/webservice";
+    private static final String BASE_api = "http://abc.com/nutrition/webservice";
 
 
 
