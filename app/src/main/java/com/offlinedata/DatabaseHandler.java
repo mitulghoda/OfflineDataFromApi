@@ -28,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_CLIENTID = "clientid";
-    private static final String KEY_SUBJECT= "subject";
+    private static final String KEY_IMAGE= "image";
 
 
     public DatabaseHandler(Context context) {
@@ -40,7 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_CONTACTS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_SUBJECT + " VARCHAR2,"
+                + KEY_IMAGE + " VARCHAR2,"
                 + KEY_CLIENTID + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
@@ -63,7 +63,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, contact.getName()); // Contact Name
         values.put(KEY_CLIENTID, contact.getClient_id()); // Contact Phone
-        values.put(KEY_SUBJECT, contact.getSubject());
+        values.put(KEY_IMAGE, contact.getSubject());
         // Inserting Row
         db.insert(TABLE_CONTACTS, null, values);
         db.close(); // Closing database connection
@@ -74,7 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-                        KEY_NAME,KEY_SUBJECT, KEY_CLIENTID }, KEY_ID + "=?",
+                        KEY_NAME,KEY_IMAGE, KEY_CLIENTID }, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -117,7 +117,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, contact.getName());
-        values.put(KEY_SUBJECT, contact.getSubject());
+        values.put(KEY_IMAGE, contact.getSubject());
         values.put(KEY_CLIENTID, contact.getClient_id());
 
         // updating row
